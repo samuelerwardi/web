@@ -36,7 +36,7 @@ class Purchase_Model extends MY_Model {
         echo "<pre>";
         print_r($this->input->post());
         echo "</pre>";
-        die;
+        // die;
         $id = $this->input->post('product_id'); // Assign posted product_id to $id
 
         $this->db->select('tbl_product.*', false);
