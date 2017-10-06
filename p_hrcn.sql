@@ -32,7 +32,7 @@ CREATE TABLE `ci_sessions` (
 
 /*Data for the table `ci_sessions` */
 
-insert  into `ci_sessions`(`session_id`,`ip_address`,`user_agent`,`last_activity`,`user_data`) values ('bc77699ec474e08ad5ab62f1a84f67f2','::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',1507201479,'a:12:{s:9:\"user_data\";s:0:\"\";s:9:\"user_name\";s:5:\"admin\";s:4:\"name\";s:13:\"administrator\";s:11:\"employee_id\";s:1:\"1\";s:17:\"employee_login_id\";s:1:\"1\";s:8:\"loggedin\";b:1;s:9:\"user_type\";s:1:\"1\";s:8:\"user_pic\";s:0:\"\";s:3:\"url\";s:15:\"admin/dashboard\";s:14:\"menu_active_id\";a:3:{i:0;s:2:\"23\";i:1;s:2:\"22\";i:2;s:2:\"18\";}s:13:\"business_info\";O:8:\"stdClass\":8:{s:19:\"business_profile_id\";s:1:\"1\";s:12:\"company_name\";s:6:\"CV FTX\";s:4:\"logo\";N;s:9:\"full_path\";N;s:5:\"email\";s:14:\"info@ftx.co.id\";s:7:\"address\";s:9:\"Cibaduyut\";s:5:\"phone\";s:0:\"\";s:8:\"currency\";s:2:\"Rp\";}s:13:\"cart_contents\";a:4:{s:32:\"7815696ecbf1c96e6894b779456d330e\";a:7:{s:5:\"rowid\";s:32:\"7815696ecbf1c96e6894b779456d330e\";s:2:\"id\";s:3:\"asd\";s:3:\"qty\";s:1:\"3\";s:5:\"price\";s:3:\"100\";s:4:\"name\";s:3:\"asd\";s:8:\"subtotal\";i:300;s:12:\"price_option\";s:12:\"price_option\";}s:32:\"73e8b30aba2d0cf27b323a487cfec25e\";a:6:{s:5:\"rowid\";s:32:\"73e8b30aba2d0cf27b323a487cfec25e\";s:2:\"id\";s:4:\"K001\";s:3:\"qty\";s:1:\"1\";s:5:\"price\";s:4:\"1000\";s:4:\"name\";s:8:\"produk 1\";s:8:\"subtotal\";i:1000;}s:11:\"total_items\";i:4;s:10:\"cart_total\";i:1300;}}');
+insert  into `ci_sessions`(`session_id`,`ip_address`,`user_agent`,`last_activity`,`user_data`) values ('9e005dbde746f49d33d7b9d272f0939c','::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',1507292010,'a:19:{s:9:\"user_data\";s:0:\"\";s:9:\"user_name\";s:5:\"admin\";s:4:\"name\";s:13:\"administrator\";s:11:\"employee_id\";s:1:\"1\";s:17:\"employee_login_id\";s:1:\"1\";s:8:\"loggedin\";b:1;s:9:\"user_type\";s:1:\"1\";s:8:\"user_pic\";s:0:\"\";s:3:\"url\";s:15:\"admin/dashboard\";s:14:\"menu_active_id\";a:3:{i:0;s:2:\"31\";i:1;s:2:\"30\";i:2;s:1:\"0\";}s:13:\"business_info\";O:8:\"stdClass\":8:{s:19:\"business_profile_id\";s:1:\"1\";s:12:\"company_name\";s:6:\"CV FTX\";s:4:\"logo\";N;s:9:\"full_path\";N;s:5:\"email\";s:14:\"info@ftx.co.id\";s:7:\"address\";s:9:\"Cibaduyut\";s:5:\"phone\";s:0:\"\";s:8:\"currency\";s:2:\"Rp\";}s:8:\"order_no\";i:1003;s:11:\"customer_id\";s:1:\"1\";s:13:\"customer_code\";s:1:\"0\";s:13:\"customer_name\";s:5:\"Cust1\";s:8:\"discount\";s:0:\"\";s:7:\"address\";s:0:\"\";s:13:\"cart_contents\";a:6:{s:32:\"ba4f96c344b69a3a4df9637449b00d7b\";a:10:{s:5:\"rowid\";s:32:\"ba4f96c344b69a3a4df9637449b00d7b\";s:2:\"id\";s:7:\"KNI002B\";s:3:\"qty\";s:1:\"1\";s:5:\"price\";s:5:\"20000\";s:12:\"buying_price\";s:5:\"10000\";s:4:\"name\";s:11:\"Kaos Basket\";s:3:\"tax\";i:0;s:12:\"price_option\";s:7:\"general\";s:7:\"options\";a:4:{s:12:\"attribute_id\";s:1:\"1\";s:10:\"product_id\";s:1:\"1\";s:14:\"attribute_name\";s:4:\"Biru\";s:15:\"attribute_value\";s:2:\"51\";}s:8:\"subtotal\";i:20000;}s:32:\"816404dae499d3398116c106e483fb0c\";a:10:{s:5:\"rowid\";s:32:\"816404dae499d3398116c106e483fb0c\";s:2:\"id\";s:7:\"KNI002B\";s:3:\"qty\";s:1:\"1\";s:5:\"price\";s:5:\"20000\";s:12:\"buying_price\";s:5:\"10000\";s:4:\"name\";s:11:\"Kaos Basket\";s:3:\"tax\";i:0;s:12:\"price_option\";s:7:\"general\";s:7:\"options\";a:4:{s:12:\"attribute_id\";s:1:\"2\";s:10:\"product_id\";s:1:\"1\";s:14:\"attribute_name\";s:5:\"Merah\";s:15:\"attribute_value\";s:2:\"50\";}s:8:\"subtotal\";i:20000;}s:32:\"476228c3ac8bf1319bf4fa5ff9a237c5\";a:10:{s:5:\"rowid\";s:32:\"476228c3ac8bf1319bf4fa5ff9a237c5\";s:2:\"id\";s:7:\"KNI002B\";s:3:\"qty\";s:1:\"1\";s:5:\"price\";s:5:\"20000\";s:12:\"buying_price\";s:5:\"10000\";s:4:\"name\";s:11:\"Kaos Basket\";s:3:\"tax\";i:0;s:12:\"price_option\";s:7:\"general\";s:7:\"options\";a:4:{s:12:\"attribute_id\";s:1:\"3\";s:10:\"product_id\";s:1:\"1\";s:14:\"attribute_name\";s:5:\"Hitam\";s:15:\"attribute_value\";s:2:\"50\";}s:8:\"subtotal\";i:20000;}s:32:\"95caa6b48fcf242fa4c4947efe33f182\";a:10:{s:5:\"rowid\";s:32:\"95caa6b48fcf242fa4c4947efe33f182\";s:2:\"id\";s:7:\"KNI002B\";s:3:\"qty\";s:1:\"1\";s:5:\"price\";s:5:\"20000\";s:12:\"buying_price\";s:5:\"10000\";s:4:\"name\";s:11:\"Kaos Basket\";s:3:\"tax\";i:0;s:12:\"price_option\";s:7:\"general\";s:7:\"options\";a:4:{s:12:\"attribute_id\";s:1:\"4\";s:10:\"product_id\";s:1:\"1\";s:14:\"attribute_name\";s:5:\"Putih\";s:15:\"attribute_value\";s:2:\"50\";}s:8:\"subtotal\";i:20000;}s:11:\"total_items\";i:4;s:10:\"cart_total\";i:80000;}s:18:\"flash:old:cart_msg\";s:6:\"delete\";}'),('ae568d875d9179cee13c9a30bf1296b0','::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',1507298469,'a:12:{s:9:\"user_data\";s:0:\"\";s:9:\"user_name\";s:5:\"admin\";s:4:\"name\";s:13:\"administrator\";s:11:\"employee_id\";s:1:\"1\";s:17:\"employee_login_id\";s:1:\"1\";s:8:\"loggedin\";b:1;s:9:\"user_type\";s:1:\"1\";s:8:\"user_pic\";s:0:\"\";s:3:\"url\";s:15:\"admin/dashboard\";s:14:\"menu_active_id\";a:3:{i:0;s:2:\"31\";i:1;s:2:\"30\";i:2;s:1:\"0\";}s:13:\"business_info\";O:8:\"stdClass\":8:{s:19:\"business_profile_id\";s:1:\"1\";s:12:\"company_name\";s:6:\"CV FTX\";s:4:\"logo\";N;s:9:\"full_path\";N;s:5:\"email\";s:14:\"info@ftx.co.id\";s:7:\"address\";s:9:\"Cibaduyut\";s:5:\"phone\";s:0:\"\";s:8:\"currency\";s:2:\"Rp\";}s:8:\"order_no\";i:1005;}');
 
 /*Table structure for table `countries` */
 
@@ -62,6 +62,42 @@ CREATE TABLE `installer` (
 
 insert  into `installer`(`id`,`installer_flag`) values (1,1);
 
+/*Table structure for table `keu_saldo` */
+
+DROP TABLE IF EXISTS `keu_saldo`;
+
+CREATE TABLE `keu_saldo` (
+  `idsaldo` int(11) NOT NULL AUTO_INCREMENT,
+  `idvarout` int(11) NOT NULL,
+  `waktu` datetime NOT NULL,
+  `saldo` varchar(200) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `desc` text NOT NULL,
+  `tp` int(1) NOT NULL DEFAULT '0' COMMENT '0 = in, 1 = out',
+  PRIMARY KEY (`idsaldo`),
+  KEY `idsaldo` (`idsaldo`)
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+
+/*Data for the table `keu_saldo` */
+
+insert  into `keu_saldo`(`idsaldo`,`idvarout`,`waktu`,`saldo`,`title`,`desc`,`tp`) values (1,0,'2017-10-03 15:38:35','2000000','sim','Pencatatan SIM',0),(2,2,'2017-10-06 08:48:13','200000','1-KNI002B','Pembelanjaan KNI002B, dengan no tagihan 1',1),(3,2,'2017-10-06 09:10:51','10000','2-KNI002B','Pembelanjaan KNI002B, dengan no tagihan 2',1),(4,2,'2017-10-06 09:10:51','200','2-p001','Pembelanjaan p001, dengan no tagihan 2',1),(5,2,'2017-10-06 09:12:07','2000','3-p001','Pembelanjaan p001, dengan no tagihan 3',1),(6,2,'2017-10-06 09:12:07','10000','3-KNI002B','Pembelanjaan KNI002B, dengan no tagihan 3',1),(7,1,'2017-10-06 09:13:10','300','1001-p001','Penjualan p001, dengan no faktur 1001',0),(8,1,'2017-10-06 09:13:10','20000','1001-KNI002B','Penjualan KNI002B, dengan no faktur 1001',0),(9,1,'2017-10-06 09:13:23','300','1002-p001','Penjualan p001, dengan no faktur 1002',0),(10,1,'2017-10-06 09:13:23','20000','1002-KNI002B','Penjualan KNI002B, dengan no faktur 1002',0),(11,1,'2017-10-06 16:10:23','300','1004-p001','Penjualan p001, dengan no faktur 1004',0),(12,1,'2017-10-06 16:10:23','60000','1004-KNI002B','Penjualan KNI002B, dengan no faktur 1004',0),(13,1,'2017-10-06 16:10:23','20000','1004-KNI002B','Penjualan KNI002B, dengan no faktur 1004',0),(14,1,'2017-10-06 16:10:23','20000','1004-KNI002B','Penjualan KNI002B, dengan no faktur 1004',0),(15,1,'2017-10-06 16:10:23','20000','1004-KNI002B','Penjualan KNI002B, dengan no faktur 1004',0);
+
+/*Table structure for table `keu_varout` */
+
+DROP TABLE IF EXISTS `keu_varout`;
+
+CREATE TABLE `keu_varout` (
+  `idvarout` int(11) NOT NULL AUTO_INCREMENT,
+  `titlevar` varchar(200) NOT NULL,
+  `tpcat` int(1) NOT NULL DEFAULT '0' COMMENT '0 = in, 1 = out',
+  PRIMARY KEY (`idvarout`),
+  KEY `idvarout` (`idvarout`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+/*Data for the table `keu_varout` */
+
+insert  into `keu_varout`(`idvarout`,`titlevar`,`tpcat`) values (1,'Penjualan Kasir',0),(2,'Pembelanjaan Stok',1),(3,'Pengeluaran Lain',1),(4,'Penjualan Sampah',0);
+
 /*Table structure for table `tbl_attribute` */
 
 DROP TABLE IF EXISTS `tbl_attribute`;
@@ -72,11 +108,11 @@ CREATE TABLE `tbl_attribute` (
   `attribute_name` varchar(100) NOT NULL,
   `attribute_value` text NOT NULL,
   PRIMARY KEY (`attribute_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_attribute` */
 
-insert  into `tbl_attribute`(`attribute_id`,`product_id`,`attribute_name`,`attribute_value`) values (1,1,'Biru','50'),(2,1,'Merah','50'),(3,1,'Hitam','50'),(4,1,'Putih','50'),(5,3,'label','a'),(6,4,'label1','a'),(7,5,'Hitam','10'),(8,6,'Merah','10'),(9,6,'Hitam','20'),(10,7,'Merah','10'),(11,7,'Hitam','20'),(12,8,'Merah','10'),(13,8,'Hitam','20');
+insert  into `tbl_attribute`(`attribute_id`,`product_id`,`attribute_name`,`attribute_value`) values (1,1,'Biru','54'),(2,1,'Merah','51'),(3,1,'Hitam','51'),(4,1,'Putih','51');
 
 /*Table structure for table `tbl_attribute_set` */
 
@@ -86,11 +122,11 @@ CREATE TABLE `tbl_attribute_set` (
   `attribute_set_id` int(11) NOT NULL AUTO_INCREMENT,
   `attribute_name` varchar(100) NOT NULL,
   PRIMARY KEY (`attribute_set_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_attribute_set` */
 
-insert  into `tbl_attribute_set`(`attribute_set_id`,`attribute_name`) values (1,'Hitam'),(2,'Merah'),(3,'Putih'),(4,'Biru'),(5,'label'),(6,'label1');
+insert  into `tbl_attribute_set`(`attribute_set_id`,`attribute_name`) values (1,'Hitam'),(2,'Merah'),(3,'Putih'),(4,'Biru');
 
 /*Table structure for table `tbl_business_profile` */
 
@@ -172,9 +208,11 @@ CREATE TABLE `tbl_customer` (
   `address` text NOT NULL,
   `discount` varchar(100) NOT NULL,
   PRIMARY KEY (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_customer` */
+
+insert  into `tbl_customer`(`customer_id`,`customer_code`,`customer_name`,`email`,`phone`,`address`,`discount`) values (1,0,'Cust1','cust@gmail.com','','','');
 
 /*Table structure for table `tbl_damage_product` */
 
@@ -205,11 +243,11 @@ CREATE TABLE `tbl_inventory` (
   `product_quantity` int(5) NOT NULL,
   `notify_quantity` int(5) DEFAULT NULL,
   PRIMARY KEY (`inventory_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_inventory` */
 
-insert  into `tbl_inventory`(`inventory_id`,`product_id`,`product_quantity`,`notify_quantity`) values (1,1,100,10),(2,8,0,0),(3,9,10,1);
+insert  into `tbl_inventory`(`inventory_id`,`product_id`,`product_quantity`,`notify_quantity`) values (1,1,114,10),(2,2,8,0);
 
 /*Table structure for table `tbl_invoice` */
 
@@ -221,9 +259,11 @@ CREATE TABLE `tbl_invoice` (
   `order_id` int(11) NOT NULL,
   `invoice_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`invoice_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_invoice` */
+
+insert  into `tbl_invoice`(`invoice_id`,`invoice_no`,`order_id`,`invoice_date`) values (1,1001,1,'2017-10-06 14:13:10'),(2,1002,2,'2017-10-06 14:13:23'),(3,1003,4,'2017-10-06 21:10:23');
 
 /*Table structure for table `tbl_localization` */
 
@@ -289,9 +329,11 @@ CREATE TABLE `tbl_order` (
   `note` text NOT NULL,
   `sales_person` varchar(100) NOT NULL,
   PRIMARY KEY (`order_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_order` */
+
+insert  into `tbl_order`(`order_id`,`order_no`,`order_date`,`customer_id`,`customer_name`,`customer_email`,`customer_phone`,`customer_address`,`shipping_address`,`sub_total`,`discount`,`discount_amount`,`total_tax`,`grand_total`,`payment_method`,`payment_ref`,`order_status`,`note`,`sales_person`) values (1,1001,'2017-10-06 14:13:10',0,'walking Client','','','','',20300,0,0,0,20300,'cash','',2,'','administrator'),(2,1002,'2017-10-06 14:13:23',0,'walking Client','','','','',20300,0,0,0,20300,'cash','',2,'','administrator'),(3,1003,'2017-10-06 21:07:09',0,'walking Client','','','','',120300,0,0,0,120300,'cash','',2,'','administrator'),(4,1004,'2017-10-06 21:10:23',0,'walking Client','','','','',120300,0,0,0,120300,'cash','',2,'','administrator');
 
 /*Table structure for table `tbl_order_details` */
 
@@ -311,9 +353,11 @@ CREATE TABLE `tbl_order_details` (
   `sub_total` double NOT NULL,
   `price_option` varchar(100) NOT NULL,
   PRIMARY KEY (`order_details_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_order_details` */
+
+insert  into `tbl_order_details`(`order_details_id`,`order_id`,`idsubcat`,`tgl`,`product_code`,`product_name`,`product_quantity`,`buying_price`,`selling_price`,`product_tax`,`sub_total`,`price_option`) values (1,1,1,'2017-10-06 09:13:10','p001','produk a',1,200,300,0,300,'general'),(2,1,1,'2017-10-06 09:13:10','KNI002B','Kaos Basket',1,10000,20000,0,20000,'general'),(3,2,1,'2017-10-06 09:13:23','p001','produk a',1,200,300,0,300,'general'),(4,2,1,'2017-10-06 09:13:23','KNI002B','Kaos Basket',1,10000,20000,0,20000,'general'),(5,4,1,'2017-10-06 16:10:23','p001','produk a',1,200,300,0,300,'general'),(6,4,1,'2017-10-06 16:10:23','KNI002B','Kaos Basket',3,10000,20000,0,60000,'general'),(7,4,1,'2017-10-06 16:10:23','KNI002B','Kaos Basket',1,10000,20000,0,20000,'general'),(8,4,1,'2017-10-06 16:10:23','KNI002B','Kaos Basket',1,10000,20000,0,20000,'general'),(9,4,1,'2017-10-06 16:10:23','KNI002B','Kaos Basket',1,10000,20000,0,20000,'general');
 
 /*Table structure for table `tbl_product` */
 
@@ -330,11 +374,11 @@ CREATE TABLE `tbl_product` (
   `barcode` varchar(100) NOT NULL,
   `tax_id` int(11) NOT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_product` */
 
-insert  into `tbl_product`(`product_id`,`product_code`,`product_name`,`product_note`,`status`,`subcategory_id`,`barcode_path`,`barcode`,`tax_id`) values (1,'KNI002B','Kaos Basket','',1,1,'/var/www/html/p/hrcn/inv/img/barcode/KNI002B.jpg','img/barcode/KNI002B.jpg',1),(2,'K001','produk 1','produk desk',1,1,'C:\\xampp\\htdocs\\data\\web/img/barcode/K001.jpg','img/barcode/K001.jpg',1),(3,'K001','produk 1','produk desk',1,1,'C:\\xampp\\htdocs\\data\\web/img/barcode/K001.jpg','img/barcode/K001.jpg',1),(4,'K001','produk 1','produk desk',1,1,'C:\\xampp\\htdocs\\data\\web/img/barcode/K001.jpg','img/barcode/K001.jpg',1),(5,'K001','produk 1','produk desk',1,1,'C:\\xampp\\htdocs\\data\\web/img/barcode/K001.jpg','img/barcode/K001.jpg',1),(6,'K001','produk 1','produk desk',1,1,'C:\\xampp\\htdocs\\data\\web/img/barcode/K001.jpg','img/barcode/K001.jpg',1),(7,'K001','produk 1','produk desk',1,1,'C:\\xampp\\htdocs\\data\\web/img/barcode/K001.jpg','img/barcode/K001.jpg',1),(8,'K001','produk 1','produk desk',1,1,'C:\\xampp\\htdocs\\data\\web/img/barcode/K001.jpg','img/barcode/K001.jpg',1),(9,'asd','asd','asd',1,1,'C:\\xampp\\htdocs\\data\\web/img/barcode/asd.jpg','img/barcode/asd.jpg',1);
+insert  into `tbl_product`(`product_id`,`product_code`,`product_name`,`product_note`,`status`,`subcategory_id`,`barcode_path`,`barcode`,`tax_id`) values (1,'KNI002B','Kaos Basket','',1,1,'/var/www/html/p/hrcn/inv/img/barcode/KNI002B.jpg','img/barcode/KNI002B.jpg',1),(2,'p001','produk a','produk a',1,1,'C:\\xampp\\htdocs\\data\\web/img/barcode/p001.jpg','img/barcode/p001.jpg',1);
 
 /*Table structure for table `tbl_product_image` */
 
@@ -360,11 +404,11 @@ CREATE TABLE `tbl_product_price` (
   `buying_price` double NOT NULL,
   `selling_price` double NOT NULL,
   PRIMARY KEY (`product_price_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_product_price` */
 
-insert  into `tbl_product_price`(`product_price_id`,`product_id`,`buying_price`,`selling_price`) values (1,1,10000,20000),(2,2,1000,2000),(3,3,1000,2000),(4,4,1000,2000),(5,5,1000,2000),(6,6,1000,2000),(7,7,1000,2000),(8,8,1000,2000),(9,9,100,200);
+insert  into `tbl_product_price`(`product_price_id`,`product_id`,`buying_price`,`selling_price`) values (1,1,10000,20000),(2,2,200,300);
 
 /*Table structure for table `tbl_product_tag` */
 
@@ -375,11 +419,11 @@ CREATE TABLE `tbl_product_tag` (
   `product_id` int(11) NOT NULL,
   `tag` varchar(100) NOT NULL,
   PRIMARY KEY (`product_tag_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_product_tag` */
 
-insert  into `tbl_product_tag`(`product_tag_id`,`product_id`,`tag`) values (1,8,'Merah'),(2,8,'Hitam'),(4,9,'');
+insert  into `tbl_product_tag`(`product_tag_id`,`product_id`,`tag`) values (1,2,'');
 
 /*Table structure for table `tbl_purchase` */
 
@@ -401,7 +445,7 @@ CREATE TABLE `tbl_purchase` (
 
 /*Data for the table `tbl_purchase` */
 
-insert  into `tbl_purchase`(`purchase_id`,`purchase_order_number`,`supplier_id`,`supplier_name`,`grand_total`,`purchase_ref`,`payment_method`,`payment_ref`,`purchase_by`,`datetime`) values (1,101,1,'SISA JAIT',10000,'10000','card','','administrator','2017-10-05 15:58:13'),(2,102,1,'SISA JAIT',100,'','cash','','administrator','2017-10-05 18:05:57'),(3,103,1,'SISA JAIT',1300,'','cash','','administrator','2017-10-05 18:26:21');
+insert  into `tbl_purchase`(`purchase_id`,`purchase_order_number`,`supplier_id`,`supplier_name`,`grand_total`,`purchase_ref`,`payment_method`,`payment_ref`,`purchase_by`,`datetime`) values (1,101,1,'SISA JAIT',200000,'','cash','','administrator','2017-10-06 13:48:13'),(2,102,1,'SISA JAIT',10200,'','cash','','administrator','2017-10-06 14:10:51'),(3,103,1,'SISA JAIT',12000,'','cash','','administrator','2017-10-06 14:12:07');
 
 /*Table structure for table `tbl_purchase_product` */
 
@@ -416,9 +460,11 @@ CREATE TABLE `tbl_purchase_product` (
   `unit_price` int(5) NOT NULL,
   `sub_total` int(5) NOT NULL,
   PRIMARY KEY (`purchase_product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_purchase_product` */
+
+insert  into `tbl_purchase_product`(`purchase_product_id`,`purchase_id`,`product_code`,`product_name`,`qty`,`unit_price`,`sub_total`) values (1,1,'KNI002B','Kaos Basket',20,10000,200000),(2,2,'KNI002B','Kaos Basket',1,10000,10000),(3,2,'p001','produk a',1,200,200),(4,3,'p001','produk a',10,200,2000),(5,3,'KNI002B','Kaos Basket',1,10000,10000);
 
 /*Table structure for table `tbl_special_offer` */
 
@@ -477,11 +523,11 @@ CREATE TABLE `tbl_tag` (
   `tag_id` int(11) NOT NULL AUTO_INCREMENT,
   `tag` varchar(100) NOT NULL,
   PRIMARY KEY (`tag_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_tag` */
 
-insert  into `tbl_tag`(`tag_id`,`tag`) values (1,'Merah'),(2,'Hitam'),(3,'');
+insert  into `tbl_tag`(`tag_id`,`tag`) values (1,'');
 
 /*Table structure for table `tbl_tax` */
 

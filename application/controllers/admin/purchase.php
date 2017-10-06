@@ -261,7 +261,11 @@ class Purchase extends Admin_Controller {
                 $inventory = $this->global_model->get_by(array('product_id' => $product_id), true);
                 $inventory_id = $inventory->inventory_id;
                 $inventory_qty['product_quantity'] = $item['qty'] + $inventory->product_quantity;
-                $this->global_model->save($inventory_qty, $inventory_id);
+                $save = $this->global_model->save($inventory_qty, $inventory_id);
+                // UPDATE ATTRIBUTE
+                if (!empty($item["options"])) {
+                    $this->db->update("tbl_attribute", array("attribute_value"=> ((Int)$item["options"]["attribute_value"] + (Int)$item["qty"])), array("attribute_id" => $item["options"]["attribute_id"]));
+                }
             }
         }
 

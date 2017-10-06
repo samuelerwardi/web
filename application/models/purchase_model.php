@@ -33,9 +33,9 @@ class Purchase_Model extends MY_Model {
 
     // Add an item to the cart
     function validate_add_cart_item() {
-        echo "<pre>";
-        print_r($this->input->post());
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($this->input->post());
+        // echo "</pre>";
         // die;
         $attribute = array();
         $id = $this->input->post('product_id'); // Assign posted product_id to $id
@@ -53,11 +53,15 @@ class Purchase_Model extends MY_Model {
         $result = $query_result->row();
         
         if ($result) {
+            // GET ATTRIBUTE
             if (isset($attribute_id) && !empty($attribute_id)) {
                 $this->db->select("*");
                 $this->db->from("tbl_attribute");
                 $this->db->where("attribute_id", $attribute_id);
                 $attribute = $this->db->get()->result_array();
+                if ($attribute) {
+                    $attribute = $attribute[0];
+                }
             }
             if ($result->buying_price <= 1) {
                 $price = 1;

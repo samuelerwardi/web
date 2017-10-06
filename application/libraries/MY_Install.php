@@ -27,17 +27,17 @@ class MY_Install
         } else {
 
             //query from installer tbl
-            // $installer = mysqli_query('SELECT installer_flag FROM installer');
+            $installer = mysqli_query('SELECT installer_flag FROM installer');
 
-            // $item = mysql_fetch_assoc($installer);
+            $item = mysql_fetch_assoc($installer);
 
-            // $flag = $item['installer_flag'];
-            // // if installer_flag = 0
-            // if ($flag == 0) {
-            //     // make it 1
-            //     mysqli_query('UPDATE installer SET installer_flag=1 WHERE id=1');
-            //     redirect('install/create_user','refresh');
-            // }
+            $flag = $item['installer_flag'];
+            // if installer_flag = 0
+            if ($flag == 0) {
+                // make it 1
+                mysqli_query('UPDATE installer SET installer_flag=1 WHERE id=1');
+                redirect('install/create_user','refresh');
+            }
             //run this code
             //else nothing
         }

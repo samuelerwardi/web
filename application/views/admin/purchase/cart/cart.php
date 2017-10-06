@@ -27,7 +27,7 @@
                         <?php echo $counter ?>
                     </td>
                     <td class="vertical-td"><?php echo $item['name'] ?></td>
-                    <td class="vertical-td"><?php echo $item['options'][0]["attribute_name"] ?></td>
+                    <td class="vertical-td"><?php echo $item['options']["attribute_name"] ?></td>
                     <td class="vertical-td">
 
                         <input  type="text" name="qty" value="<?php echo $item['qty'] ?>" onblur ="purchase(this);" id="<?php echo 'qty' . $item['rowid'] ?>" class="form-control">

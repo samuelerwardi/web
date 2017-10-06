@@ -6,6 +6,7 @@
             <tr>
                 <th class="active"></th>
                 <th class="active col-sm-6">Produk</th>
+                <th class="active">Attribute</th>
                 <th class="active ">Jlm</th>
                 <th class="active">Harga</th>
                 <th class="active">Total</th>
@@ -18,12 +19,14 @@
             ?>
             <?php $counter = 1; ?>
             <?php if (!empty($cart)): foreach ($cart as $item) : ?>
-
                     <tr class="custom-tr">
                         <td class="vertical-td">
                             <?php echo $counter ?>
                         </td>
                         <td class="vertical-td"><?php echo $item['name'] ?></td>
+                        <td class="vertical-td">
+                            <?php echo count($item["options"]) == 1 ? $item["options"]["attribute_name"] : $item["options"]["attribute_name"] ?>
+                        </td>
                         <td class="vertical-td">
                             <input  type="text" name="qty" style="width: 50px" value="<?php echo $item['qty'] ?>" onblur ="order(this);" id="<?php echo 'qty' . $item['rowid'] ?>" class="form-control">
                         </td>

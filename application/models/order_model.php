@@ -34,6 +34,11 @@ class Order_Model extends MY_Model
     }
 
     function validate_add_cart_item($product_code){
+        echo "<pre>";
+        print_r($product_code);
+        echo "</pre>";
+        $explode = explode("-", $product_code);
+        $product_code = $explode[0];
 
         $this->db->select('tbl_product.*', false);
         $this->db->select('tbl_product_price.buying_price, tbl_product_price.selling_price ', false);
@@ -44,6 +49,15 @@ class Order_Model extends MY_Model
 
         $query_result = $this->db->get();
         $result = $query_result->row();
+        if ($result && !empty($result) && count($explode) == 2) {
+            $this->db->select("*");
+            $this->db->from("tbl_attribute");
+            $this->db->where("attribute_id", $explode[1]);
+            $get_attribute = $this->db->get()->result_array();
+            if (count($get_attribute) == 1) {
+                $result->attribute = $get_attribute[0];
+            }
+        }
         return $result;
 
     }

@@ -27,6 +27,16 @@ class Order extends Admin_Controller {
 
         $data['product'] = $this->order_model->get_all_product_info();
 
+        if (!empty($data["product"])) {
+            foreach ($data["product"] as $key => $value) {
+                //product attribute
+                $this->tbl_attribute('attribute_id');
+                $data["product"][$key]->attribute = $this->global_model->get_by(array('product_id' => $value->product_id), false);
+                //product inventory
+                $this->tbl_inventory('inventory_id');
+                $data["product"][$key]->inventory = $this->global_model->get_by(array('product_id' => $value->product_id), true);
+            }
+        }
 
         //destroy cart and session data
         if (empty($flag)) {
@@ -59,6 +69,11 @@ class Order extends Admin_Controller {
     public function add_cart_item() {
 
         $product_code = $this->uri->segment(4);
+        $attribute_id = $this->uri->segment(5);
+
+        $this->tbl_attribute('attribute_id');
+        $attribute = (Array)$this->global_model->get_by(array('attribute_id' => $attribute_id), true);
+        
         $result = $this->order_model->validate_add_cart_item($product_code);
 
         if ($result) {
@@ -77,7 +92,8 @@ class Order extends Admin_Controller {
                 'buying_price' => $result->buying_price,
                 'name' => $result->product_name,
                 'tax' => $tax,
-                'price_option' => 'general'
+                'price_option' => 'general',
+                'options' => $attribute
             );
             $this->cart->insert($data);
             $this->session->set_flashdata('cart_msg', 'add');
@@ -92,7 +108,10 @@ class Order extends Admin_Controller {
 
         foreach ($product_code as $v_barcode) {
             $result = $this->order_model->validate_add_cart_item($v_barcode);
-
+            // echo "<pre>";
+            // print_r($result);
+            // echo "</pre>";
+            // die;
             if ($result) {
 
                 //product price check
@@ -108,7 +127,8 @@ class Order extends Admin_Controller {
                     'buying_price' => $result->buying_price,
                     'name' => $result->product_name,
                     'tax' => $tax,
-                    'price_option' => 'general'
+                    'price_option' => 'general',
+                    'options' => $result->attribute
                 );
                 $this->cart->insert($data);
                 $this->session->set_flashdata('cart_msg', 'add');
@@ -343,6 +363,10 @@ class Order extends Admin_Controller {
 
         //save order details
         $cart = $this->cart->contents();
+        // echo "<pre>";
+        // print_r($cart);
+        // echo "</pre>";
+        // die;
         foreach ($cart as $item) {
             $this->tbl_order_details('order_details_id');
             $data_order_details['order_id'] = $order_id;
@@ -379,6 +403,9 @@ class Order extends Admin_Controller {
 
             $this->tbl_inventory('inventory_id');
             $inventory = $this->global_model->get_by(array('product_id' => $product_id), true);
+            if (!empty($item["options"])) {
+                $this->db->update("tbl_attribute", array("attribute_value"=> ((Int)$item["options"]["attribute_value"] + (Int)$item["qty"])), array("attribute_id" => $item["options"]["attribute_id"]));
+            }
             $inventory_id = $inventory->inventory_id;
             $inventory_qty['product_quantity'] = $inventory->product_quantity - $item['qty'];
             $this->global_model->save($inventory_qty, $inventory_id);
