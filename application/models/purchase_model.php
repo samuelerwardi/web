@@ -37,17 +37,28 @@ class Purchase_Model extends MY_Model {
         print_r($this->input->post());
         echo "</pre>";
         // die;
+        $attribute = array();
         $id = $this->input->post('product_id'); // Assign posted product_id to $id
+        $attribute_id = $this->input->post('product_attribute'); // Assign posted product_id to $id
+
+        
 
         $this->db->select('tbl_product.*', false);
         $this->db->select('tbl_product_price.buying_price ', false);
         $this->db->from('tbl_product');
-        $this->db->where('tbl_product.product_id', $id);
         $this->db->join('tbl_product_price', 'tbl_product_price.product_id  =  tbl_product.product_id ', 'left');
+        $this->db->where('tbl_product.product_id', $id);
+        
         $query_result = $this->db->get();
         $result = $query_result->row();
-
+        
         if ($result) {
+            if (isset($attribute_id) && !empty($attribute_id)) {
+                $this->db->select("*");
+                $this->db->from("tbl_attribute");
+                $this->db->where("attribute_id", $attribute_id);
+                $attribute = $this->db->get()->result_array();
+            }
             if ($result->buying_price <= 1) {
                 $price = 1;
             } else {
@@ -58,7 +69,8 @@ class Purchase_Model extends MY_Model {
                 'id' => $result->product_code,
                 'qty' => 1,
                 'price' => $price,
-                'name' => $result->product_name
+                'name' => $result->product_name,
+                'options' => $attribute
             );
             $this->cart->insert($data);
             return TRUE;
