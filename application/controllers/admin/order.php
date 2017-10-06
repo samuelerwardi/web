@@ -404,7 +404,7 @@ class Order extends Admin_Controller {
             $this->tbl_inventory('inventory_id');
             $inventory = $this->global_model->get_by(array('product_id' => $product_id), true);
             if (!empty($item["options"])) {
-                $this->db->update("tbl_attribute", array("attribute_value"=> ((Int)$item["options"]["attribute_value"] + (Int)$item["qty"])), array("attribute_id" => $item["options"]["attribute_id"]));
+                $this->db->update("tbl_attribute", array("attribute_value"=> ((Int)$item["options"]["attribute_value"] - (Int)$item["qty"])), array("attribute_id" => $item["options"]["attribute_id"]));
             }
             $inventory_id = $inventory->inventory_id;
             $inventory_qty['product_quantity'] = $inventory->product_quantity - $item['qty'];
