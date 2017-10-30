@@ -13,9 +13,11 @@ if (!defined('BASEPATH')) {
  *  version: 1.0
  */
 
-class Product extends Admin_Controller {
+class Product extends Admin_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('product_model');
         $this->load->model('global_model');
@@ -34,7 +36,8 @@ class Product extends Admin_Controller {
 
     /*     * * Create Category ** */
 
-    public function category($id = null) {
+    public function category($id = null)
+    {
         $this->product_model->_table_name = 'tbl_category';
         $this->product_model->_order_by = 'category_id';
         $data['all_category'] = $this->product_model->get();
@@ -57,7 +60,8 @@ class Product extends Admin_Controller {
 
     /*     * * Save Category ** */
 
-    public function save_category($id = null) {
+    public function save_category($id = null)
+    {
         $this->product_model->_table_name = 'tbl_category';
         $this->product_model->_primary_key = 'category_id';
 
@@ -90,7 +94,8 @@ class Product extends Admin_Controller {
 
     /*     * * Category Delete ** */
 
-    public function delete_category($id) {
+    public function delete_category($id)
+    {
         $this->product_model->_table_name = 'tbl_subcategory';
         $this->product_model->_order_by = 'subcategory_id';
         $where = array('category_id' => $id);
@@ -115,7 +120,8 @@ class Product extends Admin_Controller {
 
     /*     * * Create Sub Category ** */
 
-    public function subcategory($id = null) {
+    public function subcategory($id = null)
+    {
         $this->product_model->_table_name = 'tbl_category';
         $this->product_model->_order_by = 'category_id';
         $data['all_category'] = $this->product_model->get();
@@ -139,7 +145,8 @@ class Product extends Admin_Controller {
 
     /*     * * Create and Update Customer group ** */
 
-    public function save_subcategory($id = null) {
+    public function save_subcategory($id = null)
+    {
         $this->product_model->_table_name = 'tbl_subcategory';
         $this->product_model->_primary_key = 'subcategory_id';
         // input form data
@@ -173,7 +180,8 @@ class Product extends Admin_Controller {
 
     /*     * * Delete Sub Category ** */
 
-    public function delete_subcategory($id) {
+    public function delete_subcategory($id)
+    {
         $this->product_model->_table_name = 'tbl_product';
         $this->product_model->_order_by = 'subcategory_id';
         $where = array('subcategory_id' => $id);
@@ -197,7 +205,8 @@ class Product extends Admin_Controller {
 
     /*     * * Add New or Edit Product ** */
 
-    public function add_product($id = null) {
+    public function add_product($id = null)
+    {
         //tab selection
         $tab = $this->uri->segment(5);
         if (!empty($tab)) {
@@ -278,7 +287,8 @@ class Product extends Admin_Controller {
 
     /*     * * Add New or Update Attribute Group ** */
 
-    public function save_product($id = null) {
+    public function save_product($id = null)
+    {
         echo "<pre>";
         print_r($_POST);
         echo "</pre>";
@@ -402,7 +412,6 @@ class Product extends Admin_Controller {
         $attribute['product_id'] = $product_id;
 
 
-
         for ($i = 0; $i < sizeof($attribute_name); $i++) {
             if ($attribute_name[$i] != null && $attribute_value[$i] != null) {
                 $attribute['attribute_name'] = $attribute_name[$i];
@@ -468,7 +477,8 @@ class Product extends Admin_Controller {
 
     /*     * * Barcode Generate ** */
 
-    private function set_barcode($code, $id) {
+    private function set_barcode($code, $id)
+    {
 
         //load library
         $this->load->library('zend');
@@ -487,10 +497,11 @@ class Product extends Admin_Controller {
         $this->global_model->save($data, $id);
     }
 
-    private function update_barcode($code, $id) {
+    private function update_barcode($code, $id)
+    {
         $barcode = $this->db->get_where('tbl_product', array(
-                    'product_id' => $id
-                ))->row()->barcode_path;
+            'product_id' => $id
+        ))->row()->barcode_path;
         unlink($barcode);
 
         //load library
@@ -512,7 +523,8 @@ class Product extends Admin_Controller {
 
     /*     * * Manage Product ** */
 
-    public function manage_product() {
+    public function manage_product()
+    {
 
         $data['product'] = $this->product_model->get_all_product_info();
 
@@ -521,7 +533,8 @@ class Product extends Admin_Controller {
         $this->load->view('admin/_layout_main', $data);
     }
 
-    public function view_product($id) {
+    public function view_product($id)
+    {
         $data['product'] = $this->product_model->get_product_information_by_id($id);
         //product tier price
         $this->tbl_tier_price('tier_price_id');
@@ -543,10 +556,10 @@ class Product extends Admin_Controller {
 
     /*     * * Damage product management ** */
 
-    public function damage_product() {
+    public function damage_product()
+    {
         $this->tbl_damage_product('damage_product_id');
         $data['damage_product'] = $this->global_model->get();
-
 
 
         $data['title'] = 'Damage Product';
@@ -556,7 +569,8 @@ class Product extends Admin_Controller {
 
     /*     * * Add Damage product ** */
 
-    public function add_damage_product() {
+    public function add_damage_product()
+    {
 
         $this->tbl_product('product_id');
         $data['product'] = $this->global_model->get();
@@ -568,7 +582,8 @@ class Product extends Admin_Controller {
 
     /*     * * Save Damage product ** */
 
-    public function save_damage_product() {
+    public function save_damage_product()
+    {
         $data = $this->product_model->array_from_post(array('product_id', 'qty', 'note', 'decrease'));
 
         if (empty($data['product_id'])) {
@@ -614,24 +629,48 @@ class Product extends Admin_Controller {
 
     /*     * * product action handel ** */
 
-    public function product_action() {
+    public function product_action()
+    {
+
         // 1 = active
         // 2 = deactivated
         // 3 = delete
 
         $action = $this->input->post('action', true);
         $product_id = $this->input->post('product_id', true);
+        $date = date("Y-m-d");
 
+        print_r($this->input->post());
+        // die;
         if (!empty($product_id)) {
 
 
             if ($action == 1) {
                 //active product
                 $this->active_product($product_id);
-            } elseif ($action == 2) {
+            } 
+            elseif ($action == 2) {
                 //deactivated product
                 $this->deactive_product($product_id);
-            } else {
+            }
+            elseif ($action == 0) {
+                $opname_stok_komputer = $this->input->post("stok_komputer");
+                $opname_stok_fisik = $this->input->post("stok_opname");
+                $opname_stok_keterangan = $this->input->post("stok_opname_keterangan");
+                // UPDATE OPNAME
+                foreach ($product_id as $key => $value) {
+                    $data["inventory_id"][] = $date;
+                    $data["product_id"][] = $value;
+                    $data["product_quantity"][] = $opname_stok_komputer[$value];
+                    $data["product_quantity_opname"][] = $opname_stok_fisik[$value];
+                    $data["keterangan_opname"][] = $opname_stok_keterangan[$value];
+                }
+                echo "<pre>";
+                print_r($data);
+                echo "</pre>";
+                die;
+             } 
+            else {
                 //delete product
                 $this->delete_product($product_id);
             }
@@ -642,7 +681,8 @@ class Product extends Admin_Controller {
 
     /*     * * product activate ** */
 
-    public function active_product($product_id) {
+    public function active_product($product_id)
+    {
         foreach ($product_id as $v_product_id) {
             $id = $v_product_id;
             $data['status'] = 1;
@@ -656,7 +696,8 @@ class Product extends Admin_Controller {
 
     /*     * * product deactivate ** */
 
-    public function deactive_product($product_id) {
+    public function deactive_product($product_id)
+    {
         foreach ($product_id as $v_product_id) {
             $id = $v_product_id;
             $data['status'] = 0;
@@ -670,7 +711,8 @@ class Product extends Admin_Controller {
 
     /*     * * Delete product** */
 
-    public function delete_product($id) {
+    public function delete_product($id)
+    {
         if (is_array($id)) {
             foreach ($id as $v_id) {
                 $this->_delete($v_id);
@@ -694,7 +736,8 @@ class Product extends Admin_Controller {
 
     /*     * * Delete Function ** */
 
-    public function _delete($id) {
+    public function _delete($id)
+    {
 
         //delete from tbl_product
         $this->tbl_product('product_id');
@@ -753,7 +796,8 @@ class Product extends Admin_Controller {
 
     /*     * * Add Damage product ** */
 
-    public function print_barcode() {
+    public function print_barcode()
+    {
 
         $this->tbl_product('product_id');
         $data['product'] = $this->global_model->get();
@@ -763,7 +807,8 @@ class Product extends Admin_Controller {
         $this->load->view('admin/_layout_full', $data);
     }
 
-    public function add_to_print() {
+    public function add_to_print()
+    {
 
         $product_id = $this->input->post('product_id', true);
 
@@ -795,12 +840,14 @@ class Product extends Admin_Controller {
 
     /*     * * Barcode Print Session Destroy ** */
 
-    public function clear_print_tray() {
+    public function clear_print_tray()
+    {
         unset($_SESSION['barcode']);
         redirect('admin/product/print_barcode');
     }
 
-    public function barcode_pdf() {
+    public function barcode_pdf()
+    {
         // load DOMPDF to create PDF
         $this->load->helper('dompdf');
 
@@ -811,7 +858,8 @@ class Product extends Admin_Controller {
 
     /*     * * Delete tier price ** */
 
-    public function delete_tire_price($id) {
+    public function delete_tire_price($id)
+    {
 
         $this->tbl_tier_price('tier_price_id');
 
@@ -823,7 +871,8 @@ class Product extends Admin_Controller {
 
     /*     * * Delete Attribute ** */
 
-    public function delete_attribute($id) {
+    public function delete_attribute($id)
+    {
 
         $this->tbl_attribute('attribute_id');
 
@@ -835,7 +884,8 @@ class Product extends Admin_Controller {
 
     /*     * * Delete Damage Product ** */
 
-    public function delete_damage_product($id) {
+    public function delete_damage_product($id)
+    {
         $this->tbl_damage_product('damage_product_id');
         $this->global_model->delete($id);
         $this->message->delete_success('admin/product/damage_product');
@@ -843,7 +893,8 @@ class Product extends Admin_Controller {
 
     /*     * * Notification Product ** */
 
-    public function notification_product() {
+    public function notification_product()
+    {
 
         $data['product'] = $this->product_model->get_all_product_info();
 
@@ -854,7 +905,8 @@ class Product extends Admin_Controller {
 
     /*     * * Get subcategory by category ** */
 
-    public function get_subcategory_by_category($id = null) {
+    public function get_subcategory_by_category($id = null)
+    {
         $this->tbl_subcategory('subcategory_id');
         $subcategory = $this->global_model->get_by(array('category_id' => $id), false);
         if ($subcategory) {
@@ -865,7 +917,8 @@ class Product extends Admin_Controller {
         echo $HTML;
     }
 
-    public function check_product_code() {
+    public function check_product_code()
+    {
         $product_code = $this->input->post('product_code');
         $product_id = $this->input->post('product_id');
         if (!empty($product_code)) {

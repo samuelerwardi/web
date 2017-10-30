@@ -35,7 +35,8 @@ class Login_Model extends MY_Model
     {
         $this->_table_name = 'tbl_user';
         $this->_order_by = 'user_id';
-
+        // var_dump($this->hash($this->input->post('password')));
+        // die;
         $user = $this->get_by(array(
                 'user_name' => $this->input->post('user_name'),
                 'password' => $this->hash($this->input->post('password')),
