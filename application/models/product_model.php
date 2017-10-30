@@ -64,6 +64,22 @@ class Product_Model extends MY_Model
         $result = $query_result->result();
         return $result;
     }
+
+    public function get_all_product_info_opname($date)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_product');
+        $this->db->join('tbl_product_image', 'tbl_product_image.product_id  =  tbl_product.product_id ', 'left');
+        $this->db->join('tbl_subcategory', 'tbl_subcategory.subcategory_id  =  tbl_product.subcategory_id ', 'left');
+        $this->db->join('tbl_category', 'tbl_category.category_id  =  tbl_subcategory.category_id ', 'left');
+        $this->db->join('tbl_inventory_log', 'tbl_inventory_log.product_id  =  tbl_product.product_id ', 'left');
+        $this->db->where("tbl_inventory_log.inventory_id", $date);
+        $this->db->order_by('tbl_product.product_id', ' DESC');
+        $query_result = $this->db->get();
+        $result = $query_result->result();
+        return $result;
+    }
+
     public function get_product_information_by_id($id)
     {
         $this->db->select('tbl_product.*', false);
