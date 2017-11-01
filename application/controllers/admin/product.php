@@ -523,14 +523,22 @@ class Product extends Admin_Controller
 
     /*     * * Manage Product ** */
 
-    public function manage_product()
+    public function manage_product($action = FALSE, $start_date = NULL, $end_date = NULL)
     {
-
+        
         $data['product'] = $this->product_model->get_all_product_info();
-        $data["opnames"] = $this->db->query("SELECT distinct(inventory_id) FROM tbl_inventory_log ORDER BY inventory_id ASC")->result_array();
+        $data["opnames"] = $this->db->query("SELECT distinct(opname_id) FROM tbl_inventory_log ORDER BY opname_id ASC")->result_array();
 
-        if (!empty($this->input->get("opname_date"))) {
-            $data["product_opnames"] = $this->product_model->get_all_product_info_opname($this->input->get("opname_date"));
+        if ($action !== FALSE) {
+            $data["product_opnames"] = $this->product_model->get_all_product_info_opname($start_date, $end_date);
+            // echo $this->db->last_query();
+            // echo "<pre>";
+            // print_r($data["product_opnames"]);
+            // echo "</pre>";
+            // die;
+            $data["action"]["opname"] = true;
+            $data["opname"]["start_date"] = $start_date;
+            $data["opname"]["end_date"] = $end_date;
         }
         
         $data['title'] = 'Manage Product';
@@ -664,7 +672,7 @@ class Product extends Admin_Controller
                 $opname_stok_keterangan = $this->input->post("stok_opname_keterangan");
                 // UPDATE OPNAME
                 foreach ($product_id as $key => $value) {
-                    $data[$key]["inventory_id"] = $date;
+                    $data[$key]["opname_id"] = $date;
                     $data[$key]["product_id"] = $value;
                     $data[$key]["product_quantity"] = $opname_stok_komputer[$value];
                     $data[$key]["product_quantity_opname"] = $opname_stok_fisik[$value];

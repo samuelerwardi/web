@@ -38,6 +38,8 @@ class Login extends MY_Controller
         $this->form_validation->set_rules($rules);
         if ($this->form_validation->run() == true) {
             // We can login and redirect
+            // var_dump($this->login_model->login());
+            // die;
             if ($this->login_model->login() == true) {
                 redirect($dashboard);
             } else {

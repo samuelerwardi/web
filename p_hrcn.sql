@@ -12,10 +12,6 @@ MySQL - 5.5.5-10.1.25-MariaDB : Database - p_hrcn
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`p_hrcn` /*!40100 DEFAULT CHARACTER SET latin1 */;
-
-USE `p_hrcn`;
-
 /*Table structure for table `ci_sessions` */
 
 DROP TABLE IF EXISTS `ci_sessions`;
@@ -32,7 +28,7 @@ CREATE TABLE `ci_sessions` (
 
 /*Data for the table `ci_sessions` */
 
-insert  into `ci_sessions`(`session_id`,`ip_address`,`user_agent`,`last_activity`,`user_data`) values ('9e005dbde746f49d33d7b9d272f0939c','::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',1507292010,'a:19:{s:9:\"user_data\";s:0:\"\";s:9:\"user_name\";s:5:\"admin\";s:4:\"name\";s:13:\"administrator\";s:11:\"employee_id\";s:1:\"1\";s:17:\"employee_login_id\";s:1:\"1\";s:8:\"loggedin\";b:1;s:9:\"user_type\";s:1:\"1\";s:8:\"user_pic\";s:0:\"\";s:3:\"url\";s:15:\"admin/dashboard\";s:14:\"menu_active_id\";a:3:{i:0;s:2:\"31\";i:1;s:2:\"30\";i:2;s:1:\"0\";}s:13:\"business_info\";O:8:\"stdClass\":8:{s:19:\"business_profile_id\";s:1:\"1\";s:12:\"company_name\";s:6:\"CV FTX\";s:4:\"logo\";N;s:9:\"full_path\";N;s:5:\"email\";s:14:\"info@ftx.co.id\";s:7:\"address\";s:9:\"Cibaduyut\";s:5:\"phone\";s:0:\"\";s:8:\"currency\";s:2:\"Rp\";}s:8:\"order_no\";i:1003;s:11:\"customer_id\";s:1:\"1\";s:13:\"customer_code\";s:1:\"0\";s:13:\"customer_name\";s:5:\"Cust1\";s:8:\"discount\";s:0:\"\";s:7:\"address\";s:0:\"\";s:13:\"cart_contents\";a:6:{s:32:\"ba4f96c344b69a3a4df9637449b00d7b\";a:10:{s:5:\"rowid\";s:32:\"ba4f96c344b69a3a4df9637449b00d7b\";s:2:\"id\";s:7:\"KNI002B\";s:3:\"qty\";s:1:\"1\";s:5:\"price\";s:5:\"20000\";s:12:\"buying_price\";s:5:\"10000\";s:4:\"name\";s:11:\"Kaos Basket\";s:3:\"tax\";i:0;s:12:\"price_option\";s:7:\"general\";s:7:\"options\";a:4:{s:12:\"attribute_id\";s:1:\"1\";s:10:\"product_id\";s:1:\"1\";s:14:\"attribute_name\";s:4:\"Biru\";s:15:\"attribute_value\";s:2:\"51\";}s:8:\"subtotal\";i:20000;}s:32:\"816404dae499d3398116c106e483fb0c\";a:10:{s:5:\"rowid\";s:32:\"816404dae499d3398116c106e483fb0c\";s:2:\"id\";s:7:\"KNI002B\";s:3:\"qty\";s:1:\"1\";s:5:\"price\";s:5:\"20000\";s:12:\"buying_price\";s:5:\"10000\";s:4:\"name\";s:11:\"Kaos Basket\";s:3:\"tax\";i:0;s:12:\"price_option\";s:7:\"general\";s:7:\"options\";a:4:{s:12:\"attribute_id\";s:1:\"2\";s:10:\"product_id\";s:1:\"1\";s:14:\"attribute_name\";s:5:\"Merah\";s:15:\"attribute_value\";s:2:\"50\";}s:8:\"subtotal\";i:20000;}s:32:\"476228c3ac8bf1319bf4fa5ff9a237c5\";a:10:{s:5:\"rowid\";s:32:\"476228c3ac8bf1319bf4fa5ff9a237c5\";s:2:\"id\";s:7:\"KNI002B\";s:3:\"qty\";s:1:\"1\";s:5:\"price\";s:5:\"20000\";s:12:\"buying_price\";s:5:\"10000\";s:4:\"name\";s:11:\"Kaos Basket\";s:3:\"tax\";i:0;s:12:\"price_option\";s:7:\"general\";s:7:\"options\";a:4:{s:12:\"attribute_id\";s:1:\"3\";s:10:\"product_id\";s:1:\"1\";s:14:\"attribute_name\";s:5:\"Hitam\";s:15:\"attribute_value\";s:2:\"50\";}s:8:\"subtotal\";i:20000;}s:32:\"95caa6b48fcf242fa4c4947efe33f182\";a:10:{s:5:\"rowid\";s:32:\"95caa6b48fcf242fa4c4947efe33f182\";s:2:\"id\";s:7:\"KNI002B\";s:3:\"qty\";s:1:\"1\";s:5:\"price\";s:5:\"20000\";s:12:\"buying_price\";s:5:\"10000\";s:4:\"name\";s:11:\"Kaos Basket\";s:3:\"tax\";i:0;s:12:\"price_option\";s:7:\"general\";s:7:\"options\";a:4:{s:12:\"attribute_id\";s:1:\"4\";s:10:\"product_id\";s:1:\"1\";s:14:\"attribute_name\";s:5:\"Putih\";s:15:\"attribute_value\";s:2:\"50\";}s:8:\"subtotal\";i:20000;}s:11:\"total_items\";i:4;s:10:\"cart_total\";i:80000;}s:18:\"flash:old:cart_msg\";s:6:\"delete\";}'),('ae568d875d9179cee13c9a30bf1296b0','::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',1507298469,'a:12:{s:9:\"user_data\";s:0:\"\";s:9:\"user_name\";s:5:\"admin\";s:4:\"name\";s:13:\"administrator\";s:11:\"employee_id\";s:1:\"1\";s:17:\"employee_login_id\";s:1:\"1\";s:8:\"loggedin\";b:1;s:9:\"user_type\";s:1:\"1\";s:8:\"user_pic\";s:0:\"\";s:3:\"url\";s:15:\"admin/dashboard\";s:14:\"menu_active_id\";a:3:{i:0;s:2:\"31\";i:1;s:2:\"30\";i:2;s:1:\"0\";}s:13:\"business_info\";O:8:\"stdClass\":8:{s:19:\"business_profile_id\";s:1:\"1\";s:12:\"company_name\";s:6:\"CV FTX\";s:4:\"logo\";N;s:9:\"full_path\";N;s:5:\"email\";s:14:\"info@ftx.co.id\";s:7:\"address\";s:9:\"Cibaduyut\";s:5:\"phone\";s:0:\"\";s:8:\"currency\";s:2:\"Rp\";}s:8:\"order_no\";i:1005;}');
+insert  into `ci_sessions`(`session_id`,`ip_address`,`user_agent`,`last_activity`,`user_data`) values ('2e56ec0fa802016500eb8f3c695f67c7','::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',1509443591,'a:11:{s:9:\"user_data\";s:0:\"\";s:9:\"user_name\";s:5:\"admin\";s:4:\"name\";s:13:\"administrator\";s:11:\"employee_id\";s:1:\"1\";s:17:\"employee_login_id\";s:1:\"1\";s:8:\"loggedin\";b:1;s:9:\"user_type\";s:1:\"1\";s:8:\"user_pic\";s:0:\"\";s:3:\"url\";s:15:\"admin/dashboard\";s:14:\"menu_active_id\";a:3:{i:0;s:2:\"14\";i:1;s:1:\"7\";i:2;s:1:\"0\";}s:13:\"business_info\";O:8:\"stdClass\":8:{s:19:\"business_profile_id\";s:1:\"1\";s:12:\"company_name\";s:6:\"CV FTX\";s:4:\"logo\";N;s:9:\"full_path\";N;s:5:\"email\";s:14:\"info@ftx.co.id\";s:7:\"address\";s:9:\"Cibaduyut\";s:5:\"phone\";s:0:\"\";s:8:\"currency\";s:2:\"Rp\";}}'),('3e04c960ef57390ab0a351fd63a4f8d5','::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',1509504753,'a:11:{s:9:\"user_data\";s:0:\"\";s:9:\"user_name\";s:5:\"admin\";s:4:\"name\";s:13:\"administrator\";s:11:\"employee_id\";s:1:\"1\";s:17:\"employee_login_id\";s:1:\"1\";s:8:\"loggedin\";b:1;s:9:\"user_type\";s:1:\"1\";s:8:\"user_pic\";s:0:\"\";s:3:\"url\";s:15:\"admin/dashboard\";s:14:\"menu_active_id\";a:3:{i:0;s:2:\"14\";i:1;s:1:\"7\";i:2;s:1:\"0\";}s:13:\"business_info\";O:8:\"stdClass\":8:{s:19:\"business_profile_id\";s:1:\"1\";s:12:\"company_name\";s:6:\"CV FTX\";s:4:\"logo\";N;s:9:\"full_path\";N;s:5:\"email\";s:14:\"info@ftx.co.id\";s:7:\"address\";s:9:\"Cibaduyut\";s:5:\"phone\";s:0:\"\";s:8:\"currency\";s:2:\"Rp\";}}');
 
 /*Table structure for table `countries` */
 
@@ -247,7 +243,24 @@ CREATE TABLE `tbl_inventory` (
 
 /*Data for the table `tbl_inventory` */
 
-insert  into `tbl_inventory`(`inventory_id`,`product_id`,`product_quantity`,`notify_quantity`) values (1,1,114,10),(2,2,8,0);
+insert  into `tbl_inventory`(`inventory_id`,`product_id`,`product_quantity`,`notify_quantity`) values (1,1,100,10),(2,2,10,0);
+
+/*Table structure for table `tbl_inventory_log` */
+
+DROP TABLE IF EXISTS `tbl_inventory_log`;
+
+CREATE TABLE `tbl_inventory_log` (
+  `opname_id` text,
+  `product_id` int(5) NOT NULL,
+  `product_quantity` int(5) NOT NULL,
+  `product_quantity_opname` int(5) DEFAULT NULL,
+  `keterangan_opname` text,
+  `created_timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `tbl_inventory_log` */
+
+insert  into `tbl_inventory_log`(`opname_id`,`product_id`,`product_quantity`,`product_quantity_opname`,`keterangan_opname`,`created_timestamp`) values ('2017-10-31',2,8,10,'retur customer','2017-10-31 11:01:27'),('2017-10-31',1,114,100,'hilang barang','2017-10-31 11:01:27'),('2017-10-30',1,114,100,'hilang barang','2017-10-31 11:01:27'),('2017-10-30',1,114,100,'hilang barang','2017-10-31 11:01:27');
 
 /*Table structure for table `tbl_invoice` */
 
