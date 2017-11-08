@@ -22,6 +22,7 @@ class Product extends Admin_Controller
         $this->load->model('product_model');
         $this->load->model('global_model');
         $this->load->library('pagination');
+        $this->load->library('Excel_reader');
         $this->load->helper('ckeditor');
         $this->data['ckeditor'] = array(
             'id' => 'ck_editor',
@@ -285,14 +286,113 @@ class Product extends Admin_Controller
         $this->load->view('admin/_layout_main', $data);
     }
 
+    public function import_product($id = null)
+    {
+        //tab selection
+        $tab = $this->uri->segment(5);
+        if (!empty($tab)) {
+            if ($tab == 'price') {
+                $data['tab'] = $tab;
+            } else {
+                $data['tab'] = $tab;
+            }
+        }
+
+        //************* Retrieve Product ****************//
+
+        if ($id) {
+            $this->tbl_product('product_id');
+            $data['product_info'] = $this->global_model->get_by(array('product_id' => $id), true);
+
+            if (!empty($data['product_info'])) {
+
+                //product image
+                $this->tbl_product_image('product_image_id');
+                $data['product_image'] = $this->global_model->get_by(array('product_id' => $id), true);
+
+                //product price
+                $this->tbl_product_price('product_price_id');
+                $data['product_price'] = $this->global_model->get_by(array('product_id' => $id), true);
+
+                //product special offer
+                $this->tbl_special_offer('special_offer_id');
+                $data['special_offer'] = $this->global_model->get_by(array('product_id' => $id), true);
+
+                //product tier price
+                $this->tbl_tier_price('tier_price_id');
+                $data['tier_price'] = $this->global_model->get_by(array('product_id' => $id), false);
+
+                //product inventory
+                $this->tbl_inventory('inventory_id');
+                $data['inventory'] = $this->global_model->get_by(array('product_id' => $id), true);
+
+                //product attribute
+                $this->tbl_attribute('attribute_id');
+                $data['attribute'] = $this->global_model->get_by(array('product_id' => $id), false);
+
+                //product tag
+                $this->tbl_product_tag('product_tag_id');
+                $data['product_tags'] = $this->global_model->get_by(array('product_id' => $id), false);
+
+                //subcategory
+                $this->tbl_subcategory('subcategory_id');
+                $data['subcategory'] = $this->global_model->get();
+                $data['product_category'] = $this->global_model->get_by(array('subcategory_id' => $data['product_info']->subcategory_id), true);
+            } else {
+                // redirect with msg product not found
+                $this->message->norecord_found('admin/product/manage_product');
+            }
+        }
+
+        $data['code'] = rand(10000000, 99999);
+
+        $this->tbl_category('category_id');
+        $data['category'] = $this->global_model->get();
+
+        $this->tbl_tax('tax_id');
+        $data['tax'] = $this->global_model->get();
+
+        $this->tbl_tag('tag_id');
+        $data['tags'] = $this->global_model->get();
+
+        $this->tbl_attribute_set('attribute_set_id');
+        $data['attribute_set'] = $this->global_model->get();
+
+        // view page
+        $data['title'] = 'Add Product';
+
+        $data['editor'] = $this->data; //get ck editor
+        $data['subview'] = $this->load->view('admin/product/import_product', $data, true);
+        $this->load->view('admin/_layout_main', $data);
+    }
+
     /*     * * Add New or Update Attribute Group ** */
 
     public function save_product($id = null)
     {
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'xls'; 
+        // print_r($config);
+        $this->load->library('upload', $config);            
+        if (!$this->upload->do_upload())
+        {
+            $data = array('error' => $this->upload->display_errors());
+            print_r($data);
+            die;
+         }
+        $upload_data = $this->upload->data();
+        $this->load->library('excel_reader');
+        $this->excel_reader->setOutputEncoding('230787');
+        $file =  $upload_data['full_path'];
+        $this->excel_reader->read($file);
+        error_reporting(E_ALL ^ E_NOTICE);
+        // Sheet 1
+        $data = $this->excel_reader->sheets[0] ;
+        $dataexcel = array();
         echo "<pre>";
         print_r($_POST);
         echo "</pre>";
-        // die;
+        die;
         if ($id) { // if id
             $product_image_id = $this->input->post('product_image_id', true);
             $product_price_id = $this->input->post('product_price_id', true);
