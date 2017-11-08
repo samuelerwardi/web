@@ -5,11 +5,11 @@ if (!defined('BASEPATH')) {
 }
 
 /*
- * 	@author : CodesLab
+ *  @author : CodesLab
  *  @support: support@codeslab.net
- * 	date	: 05 June, 2015
- * 	Easy Inventory
- * 	http://www.codeslab.net
+ *  date    : 05 June, 2015
+ *  Easy Inventory
+ *  http://www.codeslab.net
  *  version: 1.0
  */
 
@@ -286,81 +286,166 @@ class Product extends Admin_Controller
         $this->load->view('admin/_layout_main', $data);
     }
 
-    public function import_product($id = null)
+    public function import_product()
     {
-        //tab selection
-        $tab = $this->uri->segment(5);
-        if (!empty($tab)) {
-            if ($tab == 'price') {
-                $data['tab'] = $tab;
-            } else {
-                $data['tab'] = $tab;
-            }
-        }
+        // IF UPLOAD FILE
+        if ($this->input->post() && !empty($_FILES)) {
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'xls'; 
+            // print_r($config);
+            $this->load->library('upload', $config);            
+            if (!$this->upload->do_upload())
+            {
+                $data = array('error' => $this->upload->display_errors());
+                print_r($data);
+                die;
+             }
+            $upload_data = $this->upload->data();
+            $this->load->library('excel_reader');
+            $this->excel_reader->setOutputEncoding('230787');
+            $file =  $upload_data['full_path'];
+            $this->excel_reader->read($file);
+            error_reporting(E_ALL ^ E_NOTICE);
+            // Sheet 1
+            $data = $this->excel_reader->sheets[0] ;
+            $dataexcel = array();
+            for ($i = 2; $i <= $data['numRows']; $i++) {
+                if($data['cells'][$i][1] == '') break;
+                //*************** Product Information **************
+                $product_info['product_code'] = trim($data['cells'][$i][1], "'");
+                $product_info['product_name'] = trim($data['cells'][$i][2], "'");
+                $product_info['product_note'] = trim($data['cells'][$i][3], "'");
+                $product_info['subcategory_id'] = trim($data['cells'][$i][5], "'");
+                $product_info['tax_id'] = trim($data['cells'][$i][6], "'");
 
-        //************* Retrieve Product ****************//
+                // SAVE DATA
+                $product_image_id = null;
+                $product_price_id = null;
+                $special_offer_id = null;
+                $tier_price_id = null;
+                $attribute_id = null;
+                $inventory_id = null;
 
-        if ($id) {
-            $this->tbl_product('product_id');
-            $data['product_info'] = $this->global_model->get_by(array('product_id' => $id), true);
+                $this->tbl_product('product_id');
+                $product_id = $this->global_model->save($product_info, $id);
+                $this->set_barcode($product_info['product_code'], $product_id);
 
-            if (!empty($data['product_info'])) {
+                //******************Product Price Information ************************//
+                $general_price["buying_price"] = trim($data['cells'][$i][7], "'");
+                $general_price["selling_price"] = trim($data['cells'][$i][8], "'");
+                $general_price['product_id'] = $product_id;
 
-                //product image
-                $this->tbl_product_image('product_image_id');
-                $data['product_image'] = $this->global_model->get_by(array('product_id' => $id), true);
-
-                //product price
                 $this->tbl_product_price('product_price_id');
-                $data['product_price'] = $this->global_model->get_by(array('product_id' => $id), true);
+                // save and update
+                $this->global_model->save($general_price, $product_price_id);
+                //****************** Product Price Information End ************************//
+                
+                //************************ Product Special Offer ************************//
 
-                //product special offer
-                $this->tbl_special_offer('special_offer_id');
-                $data['special_offer'] = $this->global_model->get_by(array('product_id' => $id), true);
+                $special_offer['start_date'] = trim($data['cells'][$i][9], "'");
+                $special_offer['end_date'] = trim($data['cells'][$i][10], "'");
+                $special_offer['offer_price'] = trim($data['cells'][$i][11], "'");
+                $special_offer['product_id'] = $product_id;
 
-                //product tier price
+                if ((!empty($special_offer['start_date']) && !empty($special_offer['end_date']) && !empty($special_offer['offer_price']))) {
+                    // save and update function
+                    $this->tbl_special_offer('special_offer_id');
+                    $this->global_model->save($special_offer);
+                }
+                //************************ Product Special Offer End ************************//
+                
+                //************************ Product  Tier Price Start ***********************//
+                $tier_quantity = explode(",", trim($data['cells'][$i][12], "'"));
+                $tier_price = explode(",", trim($data['cells'][$i][13], "'"));
+                $tier['product_id'] = $product_id;
+
                 $this->tbl_tier_price('tier_price_id');
-                $data['tier_price'] = $this->global_model->get_by(array('product_id' => $id), false);
 
-                //product inventory
+                for ($iterator = 0; $iterator < sizeof($tier_quantity); $iterator++) {
+                    if ($tier_quantity[$iterator] != null && $tier_price[$iterator] != null) {
+                        $tier['quantity_above'] = $tier_quantity[$iterator];
+                        $tier['tier_price'] = $tier_price[$iterator];
+                        $tier_id = $tier_price_id[$iterator];
+
+                        $this->global_model->save($tier, $tier_id);
+                    }
+                }
+                //************************ Product  Tier Price End ***********************//
+                
+
+                //************************ Product  Attribute Start **********************//
+                $attribute_name = explode(",", trim($data['cells'][$i][16], "'"));
+                $attribute_value = explode(",", trim($data['cells'][$i][17], "'"));
+                $attribute['product_id'] = $product_id;
+
+                for ($iterator = 0; $iterator < sizeof($attribute_name); $iterator++) {
+                    if ($attribute_name[$iterator] != null && $attribute_value[$iterator] != null) {
+                        $attribute['attribute_name'] = $attribute_name[$iterator];
+                        $attribute_set_name['attribute_name'] = $attribute_name[$iterator];
+                        $attribute['attribute_value'] = $attribute_value[$iterator];
+                        $product_attribute_id = $attribute_id[$iterator];
+                        //save
+                        $this->tbl_attribute('attribute_id');
+                        $this->global_model->save($attribute, $product_attribute_id);
+
+                        // save set_attribute value
+                        $this->tbl_attribute_set('attribute_set_id');
+                        $set_attribute = $this->global_model->get_by(array('attribute_name' => $attribute['attribute_name']), true);
+
+                        if (empty($set_attribute)) {
+                            $this->global_model->save($attribute_set_name);
+                        }
+                    }
+                }
+                //************************ Product  Attribute End ********************//
+                
+                //************************ Product Tag Start *************************//
+                $tages =  explode(",", trim($data['cells'][$i][16], "'"));
+                //delete product tag
+                $product_id = $product_id;
+                $this->db->where('product_id', $product_id);
+                $this->db->delete('tbl_product_tag');
+
+                for ($iterator = 0; $iterator < sizeof($tages); $iterator++) {
+                    $this->product_model->_table_name = 'tbl_tag';
+                    $this->product_model->_primary_key = 'tag_id';
+
+                    $product_tag = array();
+                    $product_tag['tag'] = $tages[$iterator];
+                    $where = array('tag' => $tages[$iterator]);
+                    $result = $this->product_model->check_by($where, 'tbl_tag');
+                    $result == true || $this->product_model->save($product_tag);
+
+                    $this->tbl_product_tag('product_tag_id');
+
+                    $product_tag['product_id'] = $product_id;
+                    $this->global_model->save($product_tag);
+                }
+
+                //************************ Product  Tag End *************************//
+                //************ Product  Inventory Information Start *****************//
+
                 $this->tbl_inventory('inventory_id');
-                $data['inventory'] = $this->global_model->get_by(array('product_id' => $id), true);
 
-                //product attribute
-                $this->tbl_attribute('attribute_id');
-                $data['attribute'] = $this->global_model->get_by(array('product_id' => $id), false);
+                $inventory['notify_quantity'] = trim($data['cells'][$i][15], "'");
+                $inventory['product_quantity'] = trim($data['cells'][$i][14], "'");
+                $inventory['product_id'] = $product_id;
 
-                //product tag
-                $this->tbl_product_tag('product_tag_id');
-                $data['product_tags'] = $this->global_model->get_by(array('product_id' => $id), false);
-
-                //subcategory
-                $this->tbl_subcategory('subcategory_id');
-                $data['subcategory'] = $this->global_model->get();
-                $data['product_category'] = $this->global_model->get_by(array('subcategory_id' => $data['product_info']->subcategory_id), true);
-            } else {
-                // redirect with msg product not found
-                $this->message->norecord_found('admin/product/manage_product');
+                $this->global_model->save($inventory, $inventory_id);
+                // echo $this->db->last_query();
+                // echo "<pre>";
+                // print_r($inventory);
+                // echo "</pre>";
+                // die;
+                $type = 'success';
+                $message = 'Product Information Saved Successfully!';
+                set_message($type, $message);
             }
         }
-
-        $data['code'] = rand(10000000, 99999);
-
-        $this->tbl_category('category_id');
-        $data['category'] = $this->global_model->get();
-
-        $this->tbl_tax('tax_id');
-        $data['tax'] = $this->global_model->get();
-
-        $this->tbl_tag('tag_id');
-        $data['tags'] = $this->global_model->get();
-
-        $this->tbl_attribute_set('attribute_set_id');
-        $data['attribute_set'] = $this->global_model->get();
+        //************* Retrieve Product ****************//
 
         // view page
         $data['title'] = 'Add Product';
-
         $data['editor'] = $this->data; //get ck editor
         $data['subview'] = $this->load->view('admin/product/import_product', $data, true);
         $this->load->view('admin/_layout_main', $data);
@@ -389,8 +474,15 @@ class Product extends Admin_Controller
         // Sheet 1
         $data = $this->excel_reader->sheets[0] ;
         $dataexcel = array();
+        for ($i = 2; $i <= $data['numRows']; $i++) {
+            if($data['cells'][$i][1] == '') break;
+            //$dataexcel[$i-1]['kode_barang'] = $data['cells'][$i][1];
+            $dataexcel[$i-1]['kode_barang'] = ltrim($data['cells'][$i][1],"'");
+            $dataexcel[$i-1]['qty']         = $data['cells'][$i][5];
+            $dataexcel[$i-1]['keterangan']  = $data['cells'][$i][6];
+        }
         echo "<pre>";
-        print_r($_POST);
+        print_r($dataexcel);
         echo "</pre>";
         die;
         if ($id) { // if id

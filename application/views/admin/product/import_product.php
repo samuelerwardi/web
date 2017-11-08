@@ -19,14 +19,11 @@
     <h3 class="panel-title">  Upload csv file </h3>
       </div>
         <div class="panel-body">
-            <form method="post" enctype="multipart/form-data" action="<?php echo base_url() ?>admin/product/save_product" id="form" >
+            <form method="post" enctype="multipart/form-data" action="<?php echo base_url() ?>admin/product/import_product" id="form" >
               <div class="form-group">
                 <label for="exampleInputFile">Upload File</label>
+                <input type="hidden" name="post" value="true">
                 <input type="file" name="userfile" id="fileField" required />
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Tanggal Opname</label>
-                <input type="text" class="form-control datepicker" id="delimiter" name="delimiter" placeholder="Tanggal Opname">
               </div>
               <button type="submit" class="btn btn-danger">Upload File</button>
             </form> 
